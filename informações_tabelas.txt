@@ -1,0 +1,92 @@
+############### COMANDO PARA IMPORTAR
+
+mysql -u usuario -p nome_bancodados < redmine_tables.sql
+
+
+##############  informações sobre as tabelas
+
+suporte@srvp05:~$ mysql -u redmine -p
+Enter password: 
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 1648
+Server version: 5.6.27-0ubuntu0.14.04.1 (Ubuntu)
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use redmine
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> select count(*) from custom_fields_projects;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0,00 sec)
+
+mysql> select count(*) from custom_fields_roles;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0,00 sec)
+
+mysql> select count(*) from custom_fields_trackers;
++----------+
+| count(*) |
++----------+
+|        3 |
++----------+
+1 row in set (0,00 sec)
+
+mysql> select count(*) from custom_fields;
++----------+
+| count(*) |
++----------+
+|        1 |
++----------+
+1 row in set (0,01 sec)
+
+mysql> select count(*) from workflows;
++----------+
+| count(*) |
++----------+
+|     2816 |
++----------+
+1 row in set (0,01 sec)
+
+mysql> 
+
+mysql> SELECT table_name FROM information_schema.tables WHERE table_name like ('custom_fields%') ;
++------------------------+
+| table_name             |
++------------------------+
+| custom_fields          |
+| custom_fields_projects |
+| custom_fields_roles    |
+| custom_fields_trackers |
++------------------------+
+4 rows in set (0,00 sec)
+
+mysql> 
+mysql> SELECT table_name FROM information_schema.tables WHERE table_name like ('workflows%') ;
++------------+
+| table_name |
++------------+
+| workflows  |
++------------+
+1 row in set (0,00 sec)
+
+mysql> 
+
+
+
